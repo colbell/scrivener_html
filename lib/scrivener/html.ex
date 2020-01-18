@@ -650,7 +650,7 @@ defmodule Scrivener.HTML do
     defp link_handler([_, action | _]) when is_atom(action) do
       with {:module, mod} <- Code.ensure_compiled(action),
            {:live, true} <- {:live, function_exported?(mod, :__live__, 0)} do
-        {Phoenix.LiveView, :live_link}
+        {Phoenix.LiveView.Helpers, :live_link}
       else
         _ -> link_handler(nil)
       end
